@@ -37,7 +37,13 @@ public class Village {
 		}
 		
 		private Etal[] trouverEtals(String produit) {
-			Etal[] etalsProduit = new Etal[etals.length];
+			int nbEtalsAvecProd=0;
+			for(int i=0;i<etals.length; i++) {
+				if (etals[i].contientProduit(produit)) {
+					nbEtalsAvecProd++;
+				}
+			}	
+			Etal[] etalsProduit = new Etal[nbEtalsAvecProd];
 			int j=0;
 			for (int i=0;i<etals.length; i++) {
 				if (etals[i].contientProduit(produit)) {
@@ -149,18 +155,19 @@ public class Village {
 	}
 	
 	public Etal rechercherEtal(Gaulois vendeur) {
-		
+		return marche.trouverVendeur(vendeur);
 	}
 	
 	public String partirVendeur(Gaulois vendeur) {
 		StringBuilder chaine = new StringBuilder();
-		
+		Etal etal = rechercherEtal(vendeur);
+		if(etal !=null) {
+			chaine.append(etal.libererEtal());
+		}	
 		return chaine.toString();
 	}
 	
 	public String afficherMarche() {
-		StringBuilder chaine = new StringBuilder();
-		
-		return chaine.toString();
+		return marche.afficherMarcher();
 	}
 }
