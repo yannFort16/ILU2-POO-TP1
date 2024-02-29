@@ -51,12 +51,13 @@ public class Village {
 			}
 			Etal[] etalsProduit = new Etal[nbEtalsAvecProd];
 			int j=0;
-			i=0;
-			while (i<etals.length && etals[i].isEtalOccupe()) {
-				if (etals[i].contientProduit(produit)) {
-					etalsProduit[j] = etals[i];
+			int k=0;
+			while (k<nbEtalsAvecProd) {
+				if (etals[k].contientProduit(produit)) {
+					etalsProduit[j] = etals[k];
 					j++;
 				}
+				k++;
 			}
 			return etalsProduit;	
 		}
@@ -150,10 +151,8 @@ public class Village {
 		Etal[] etalsProduit = marche.trouverEtals(produit);
 		if (etalsProduit.length > 0) {
 			chaine.append("Les vendeurs de " + produit +" sont :\n");
-			int i=0;
-			while (etalsProduit[i] != null && i<etalsProduit.length) {
-				chaine.append("\t- " + etalsProduit[i].getVendeur() + "\n");
-				i++;
+			for(int i=0; i<etalsProduit.length; i++) {
+				chaine.append("\t- " + etalsProduit[i].getVendeur().getNom() + "\n");
 			}
 		}
 		else {
