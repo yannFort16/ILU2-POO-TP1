@@ -24,7 +24,11 @@ public class Scenario {
 		village.ajouterHabitant(obelix);
 		village.ajouterHabitant(druide);
 		village.ajouterHabitant(abraracourcix);
-		System.out.println(village.afficherVillageois());
+		try {
+			System.out.println(village.afficherVillageois());
+		} catch (ExceptionVillageSansChef e) {
+			e.printStackTrace();
+		}
 
 		System.out.println(village.rechercherVendeursProduit("fleurs"));
 		System.out.println(village.installerVendeur(bonemine, "fleurs", 20));
