@@ -37,6 +37,7 @@ public class Village {
 				if(etals[i]==null || !etals[i].isEtalOccupe()) {
 					return i;
 				}
+				i++;
 			}
 			return -1; 
 		}
